@@ -7,14 +7,12 @@ block content
   div
     | Calculate shipping to: 
     form()
-      select(onChange="getShippingPrice(this.value)")
+      select(onChange="refreshShipping(this.value)")
         each state in states
-          option(value=state) #{state}
-    |: $<span id='shipPrice'></span>
+          option(value=state, selected=(state==selectedState)) #{state}
+    |: $<span>#{shippingPrice}</span>
 
   script.
-    async function getShippingPrice(state) {
-      const response = await fetch('http://localhost:3001/shippingcost/?state=' + state)
-      const priceJson = await response.json()
-      document.getElementById('shipPrice').textContent = priceJson.shippingPrice
+    refreshShipping = (state) => {
+      window.location='/?shipTo=' + state
     }
