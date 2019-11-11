@@ -1,6 +1,10 @@
 #!/bin/bash
 set -eo pipefail
 
+# This script will [optionally] build and deploy the application to kubernetes. It uses
+# whatever kubectl is already on the machine, with whatever configuration is already
+# applied in kubectl.
+
 GCP_PROJECT_ID="project_undefined"
 
 # ============ BEGIN: parse flags ================
@@ -20,6 +24,7 @@ done
 
 # ============ END: parse flags ================
 
+# attempt to read GCP project ID from gcloud config
 if hash gcloud 2>/dev/null; then
     GCP_PROJECT_ID=$(gcloud config list --format 'value(core.project)')
 fi
