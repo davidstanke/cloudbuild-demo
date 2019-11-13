@@ -3,9 +3,12 @@ set -eo pipefail
 
 # This script will [optionally] build and deploy the application to kubernetes. It uses
 # whatever kubectl is already on the machine, with whatever configuration is already
-# applied in kubectl.
+# applied in kubectl. It also assumes kustomize is available.
 
 GCP_PROJECT_ID="project_undefined"
+TIMESTAMP=$(date +%s)
+
+echo $TIMESTAMP
 
 # ============ BEGIN: parse flags ================
 
@@ -33,16 +36,24 @@ echo "Using GCP Project ID $GCP_PROJECT_ID"
 
 if [ "$SKIP_BUILD" = "false" ] ; then
     docker build -t \
-        gcr.io/$GCP_PROJECT_ID/cookieshop/shippingcalc:local \
+        gcr.io/$GCP_PROJECT_ID/cookieshop/shippingcalc:$TIMESTAMP \
         --build-arg PORT=8080 \
-        ../src/shippingcalc
+        ../../src/shippingcalc
     docker build -t \
-        gcr.io/$GCP_PROJECT_ID/cookieshop/web:local \
+        gcr.io/$GCP_PROJECT_ID/cookieshop/web:$TIMESTAMP \
         --build-arg PORT=8080 \
-        ../src/web
+        ../../src/web
+    docker push gcr.io/$GCP_PROJECT_ID/cookieshop/web:$TIMESTAMP 
+    docker push gcr.io/$GCP_PROJECT_ID/cookieshop/shippingcalc:$TIMESTAMP
 fi
 
+# patch k8s
+kustomize edit set image gcr.io/$GCP_PROJECT_ID/cookieshop/web:VERSION_TAG=gcr.io/$GCP_PROJECT_ID/cookieshop/web:$TIMESTAMP
+kustomize edit set image gcr.io/$GCP_PROJECT_ID/cookieshop/shippingcalc:VERSION_TAG=gcr.io/$GCP_PROJECT_ID/cookieshop/shippingcalc:$TIMESTAMP
+kustomize build . > /tmp/$TIMESTAMP.yaml
+cat /tmp/$TIMESTAMP.yaml
+
 # reinitialize 'local' namespace
-kubectl delete namespace local --ignore-not-found
-kubectl create namespace local
-kubectl apply -f k8s-local/ --namespace=local
+kubectl delete namespace $TIMESTAMP --ignore-not-found
+kubectl create namespace $TIMESTAMP
+kubectl apply -f /tmp/$TIMESTAMP.yaml --namespace=$TIMESTAMP

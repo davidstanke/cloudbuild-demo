@@ -1,0 +1,30 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- shippingcalc-deployment.yml
+- web-deployment.yml
+- shippingcalc-service.yml
+- web-service.yml
+images:
+- name: gcr.io/gcb-demo/cookieshop/shippingcalc:VERSION_TAG
+  newName: gcr.io/gcb-demo/cookieshop/shippingcalc
+  newTag: "1573601596"
+- name: gcr.io/gcb-demo/cookieshop/web:VERSION_TAG
+  newName: gcr.io/gcb-demo/cookieshop/web
+  newTag: "1573601596"
+- name: shippingcalc
+  newTag: "1573601274"
+- name: shippingcalc:VERSION_TAG
+  newName: shippingcalc
+  newTag: "1573601559"
+- name: shippingcalc:VERSTION_TAG
+  newName: shippingcalc
+  newTag: "1573601529"
+- name: web
+  newTag: "1573601274"
+- name: web:VERSION_TAG
+  newName: web
+  newTag: "1573601559"
+- name: web:VERSTION_TAG
+  newName: web
+  newTag: "1573601529"

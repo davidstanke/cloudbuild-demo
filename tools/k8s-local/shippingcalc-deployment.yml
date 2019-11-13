@@ -21,6 +21,6 @@ spec:
       containers:
       - name: shippingcalc
         # TODO: allow kustomize here
-        image: gcr.io/gcb-demo/cookieshop/shippingcalc:local
+        image: gcr.io/gcb-demo/cookieshop/shippingcalc:VERSION_TAG
         ports:
         - containerPort: 8080

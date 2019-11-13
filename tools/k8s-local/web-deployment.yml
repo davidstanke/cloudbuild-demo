@@ -21,6 +21,6 @@ spec:
       containers:
       - name: web
         # TODO: allow kustomize here
-        image: gcr.io/gcb-demo/cookieshop/web:local
+        image: gcr.io/gcb-demo/cookieshop/web:VERSION_TAG
         ports:
         - containerPort: 8080
