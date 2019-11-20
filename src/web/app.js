@@ -38,6 +38,15 @@ if(returnMode == 'web') {
 } else if(returnMode == 'get') { 
     
     // running in CLI mode; the app will return content as text in console
+    getPageContent(requestRoute).then((content) =>{
+        console.log(content);
+    });
+    
+} else {
+    throw "unknown application mode: " + returnMode;
+}
+
+async function getPageContent(requestRoute) {
     var page = content.pages.find((page) => page.route === requestRoute)
     var bannerPath = path.join(__dirname,"public",page.banner)
 
@@ -47,13 +56,9 @@ if(returnMode == 'web') {
         height:30
     }
 
-    asciify(bannerPath,options)
-        .then( (asciified) => {
-            console.log(page.greeting);
-            console.log(asciified);
-        })
-        .catch( (err) => console.error(err));
-    
-} else {
-    throw "unknown application mode: " + returnMode;
+    let asciified = asciify(bannerPath,options);
+
+    let asciiBanner = await asciified;
+
+    return page.greeting + '\n' + asciiBanner;
 }
