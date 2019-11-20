@@ -1,64 +1,35 @@
 const path = require('path');
 const express=require('express');
-const pug=require('pug');
-const content=require('./content');
-const asciify=require('asciify-image')
-const port=8080;
 
-// initialization
-var returnMode='web'; // return content via the CLI (mode 'get') or by publishing a web server (mode 'web')
-var myArgs = process.argv.slice(2);
+const indexRouter = require('./routes/index');
+const port=8080; // TODO: allow override via env var
 
-// in 'get' mode, the app will respond to invocations like 'node app.js get /' by returning the content of the '/' route
-if(myArgs.length) {
-    returnMode = myArgs[0];
-    if(returnMode == 'get') {
-        var requestRoute = myArgs.length>1 ? myArgs[1] : '/';
-    }
-}
+var app=express();
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, "public")));
+app.set('view engine', 'pug');
 
-if(returnMode == 'web') { 
-    // running in web mode; initialize web server and asset locations
-    var app=express();
-    app.set('views', path.join(__dirname, 'views'));
-    app.use(express.static(path.join(__dirname, "public")));
-    app.set('view engine', 'pug');
+// register routes
+app.use('/', indexRouter);
 
-    // register each page as a route
-    content.pages.forEach( (page) => {
-        app.get(page.route, (req,res) => res.render('default',{
-            greeting: page.greeting,
-            banner: page.banner,
-            bannerUrl: page.bannerUrl
-        }))
-    })
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
 
-    // start the server
-    var server=app.listen(8080, function() {});
-} else if(returnMode == 'get') { 
-    
-    // running in CLI mode; the app will return content as text in console
-    getPageContent(requestRoute).then((content) =>{
-        console.log(content);
-    });
-    
-} else {
-    throw "unknown application mode: " + returnMode;
-}
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-async function getPageContent(requestRoute) {
-    var page = content.pages.find((page) => page.route === requestRoute)
-    var bannerPath = path.join(__dirname,"public",page.banner)
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+  next();
+});
 
-    var options = {
-        fit: 'box',
-        width: 40,
-        height:30
-    }
+// start the server
+var server=app.listen(port, function() {});
 
-    let asciified = asciify(bannerPath,options);
-
-    let asciiBanner = await asciified;
-
-    return page.greeting + '\n' + asciiBanner;
-}
+module.exports = server;
