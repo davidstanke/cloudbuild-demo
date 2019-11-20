@@ -17,12 +17,14 @@ if(myArgs.length) {
     }
 }
 
-if(returnMode == 'web') { // web mode
+if(returnMode == 'web') { 
+    // running in web mode; initialize web server and asset locations
     var app=express();
     app.set('views', path.join(__dirname, 'views'));
     app.use(express.static(path.join(__dirname, "public")));
     app.set('view engine', 'pug');
 
+    // register each page as a route
     content.pages.forEach( (page) => {
         app.get(page.route, (req,res) => res.render('default',{
             greeting: page.greeting,
@@ -31,8 +33,11 @@ if(returnMode == 'web') { // web mode
         }))
     })
 
+    // start the server
     var server=app.listen(8080, function() {});
-} else if(returnMode == 'get') { // CLI mode
+} else if(returnMode == 'get') { 
+    
+    // running in CLI mode; the app will return content as text in console
     var page = content.pages.find((page) => page.route === requestRoute)
     var bannerPath = path.join(__dirname,"public",page.banner)
 
