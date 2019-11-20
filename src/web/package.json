@@ -11,8 +11,10 @@
   "dependencies": {
     "asciify-image": "^0.1.5",
     "express": "^4.17.1",
-    "nodemon": "^1.19.4",
     "path": "^0.12.7",
     "pug": "^2.0.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
   }
 }
