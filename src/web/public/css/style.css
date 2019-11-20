@@ -5,3 +5,14 @@
 body {
     text-align: center;
 }
+
+input[type=text] {
+    font-size:1.25em;
+}
+
+button[type=submit] {
+    font-size:1.25em;
+    font-weight:bold;
+    background-color:#eee;
+    border-radius: 0 .25em .25em 0;
+}

@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h1 #{greeting}
+    a(href=bannerUrl,target="_blank")
+        img(src=banner)
+    form(method="POST" action="/greet")
+        div.form-group
+            label(for='name') What's your name? 
+            input#name.form-control(type='text',placeholder='Your Name', name="name",required="true")
+            button.btn(type="submit") go

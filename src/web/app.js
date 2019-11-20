@@ -1,16 +1,35 @@
 const path = require('path');
 const express=require('express');
+const createError = require('http-errors');
+const bodyParser = require('body-parser');
 
-const indexRouter = require('./routes/index');
 const port=8080; // TODO: allow override via env var
 
 var app=express();
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, "public")));
 app.set('view engine', 'pug');
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // register routes
-app.use('/', indexRouter);
+app.get('/', async (req, res) => {
+    res.render('index', { 
+      title: "Hello from Google Cloud",
+      greeting: "Hello from Google Cloud",
+      banner: "/img/logo_cloud_icon.png",
+      bannerUrl: "https://cloud.google.com"
+    });
+  });
+
+app.all('/greet', async (req, res) => {
+    let user=req.body.name;
+    res.render('default', { 
+        title: "Hello, " + user,
+        greeting: "Hello, " + user + "! We think you're super.",
+        banner: "/img/logo_cloud_icon.png",
+        bannerUrl: "https://cloud.google.com"
+    });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

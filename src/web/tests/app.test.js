@@ -22,6 +22,17 @@ describe('server', () => {
                 done();
             })
     })
+
+    it('should display a personalized greeting', (done) => {
+        chai.request(app)
+            .post('/greet')
+            .type('form')
+            .send({'name':'Dave'})
+            .end((err,res) => {
+                expect(res.text).to.contain("Hello, Dave!");
+                done();
+            })
+    })
 });
 
 
