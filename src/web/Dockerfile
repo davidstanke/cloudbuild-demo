@@ -1,13 +1,6 @@
 FROM node:12-alpine
-
-WORKDIR /usr/src/app
-COPY . .
+WORKDIR /app
+COPY . /app
 RUN npm install
-
-ARG SHIPPING_API_URL=TODO
-ENV SHIPPING_API_URL=$SHIPPING_API_URL
-
-ARG PORT=8080
-ENV PORT=$PORT
-EXPOSE $PORT
-CMD ["npm","start"]
+CMD node app.js
+EXPOSE 8080
