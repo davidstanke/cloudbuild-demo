@@ -1,6 +1,5 @@
 FROM node:12-alpine
-WORKDIR /app
-COPY . /app
-RUN npm install
+COPY . .
+RUN npm install --only=production
 CMD node app.js
 EXPOSE 8080

@@ -1,7 +1,7 @@
 {
   "name": "web",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sample Web application for Google Cloud Build demo",
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/* --exit"
