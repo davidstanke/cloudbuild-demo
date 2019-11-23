@@ -4,7 +4,8 @@
   "description": "Sample Web application for Google Cloud Build demo",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/* --exit"
+    "test": "mocha tests/* --exit",
+    "lint": "npx eslint app.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "eslint": "^6.7.0",
     "mocha": "^6.2.2",
     "nodemon": "^1.19.4"
   }
