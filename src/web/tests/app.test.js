@@ -34,12 +34,3 @@ describe('server', () => {
             })
     })
 });
-
-
-
-// describe('app', () =>{
-//     it('should return the homepage greeting', () => {
-//         var greeting=app.getPageContent('/');
-//         expect(greeting).to.contain('Hello');
-//     })
-// });
