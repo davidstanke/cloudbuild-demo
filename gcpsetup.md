@@ -1,8 +1,10 @@
 ## Preparing Google Cloud to run this demo
 
 ### 1. Enable the needed APIs:
-
-<walkthrough-enable-apis apis="run.googleapis.com,cloudbuild.googleapis.com,containerregistry.googleapis.com"></walkthrough-enable-apis>
+1. Copy the following command and run it in the shell:
+```
+gcloud services enable run.googleapis.com cloudbuild.googleapis.com containerregistry.googleapis.com
+```
 
 ### 2. Grant Cloud Build permission to deploy to Cloud Run
 1. Go to [Google Cloud Console > Cloud Build Settings](https://console.cloud.google.com/cloud-build/settings)
