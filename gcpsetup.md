@@ -35,9 +35,3 @@ Using the credential helper makes it so you don't have to enter your password on
     ```
     git config --global credential.helper store
     ```
-
-### 6. log out of dockerhub
-Your Cloud Shell may have been provisioned with a default dockerhub credential; we need to clear it out:
-```
-docker logout
-```
