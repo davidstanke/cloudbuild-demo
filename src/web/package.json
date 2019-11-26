@@ -2,6 +2,11 @@
   "name": "web",
   "version": "1.0.0",
   "description": "Sample Web application for Google Cloud Build demo",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/davidstanke/cloudbuild-demo.git",
+    "directory": "/src/web"
+  },
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/* --exit",
