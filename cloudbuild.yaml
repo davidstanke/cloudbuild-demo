@@ -33,6 +33,6 @@ steps:
       "beta","run","deploy","hello",
       "--image=gcr.io/$PROJECT_ID/hello",
       "--platform=managed",
-      "--region=us-central1",
+      "--region=europe-west1",
       "--allow-unauthenticated"
     ]
