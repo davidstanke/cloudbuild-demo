@@ -12,3 +12,10 @@ gcloud services enable run.googleapis.com cloudbuild.googleapis.com containerreg
     > ...you will be promted to also grant the *Service Account User* role. Click "GRANT ACCESS TO ALL SERVICE ACCOUNTS"
 1. The Service Account Permissions page should now look like this: [TODO: insert image]
     > Leave the Cloud Console open when you're finished; we'll be using it later.
+
+### 3. (optional) enable Git credential helper
+Using the credential helper makes it so you don't have to enter your password on every push
+1. Copy the following command and run it in the shell:
+```
+git config --global credential.helper cache
+```
