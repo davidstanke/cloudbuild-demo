@@ -1,14 +1,14 @@
 steps:
 
-# run ESLint on js code
-- name: node:12
-  entrypoint: npm
-  args: ['run','lint']
-
-# run unit tests
+# install dependencies
 - name: node:12
   entrypoint: npm
   args: ['install']
+
+  # run ESLint on js code
+- name: node:12
+  entrypoint: npm
+  args: ['run','lint']
 
 # run unit tests
 - name: node:12
