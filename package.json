@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/* --exit",
-    "lint": "npx eslint app.js"
+    "lint": "npx eslint app.js",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
