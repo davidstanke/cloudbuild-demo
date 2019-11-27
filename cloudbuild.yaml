@@ -1,31 +1,31 @@
 steps:
 
-# run ESLint on js code
+#LINT: run ESLint on js code
 - name: node:12
   entrypoint: npm
-  args: ['run','lint']
+  args: ['run','lint'] #LINTED
 
-# install dependencies
+#INSTALL: install dependencies
 - name: node:12
   entrypoint: npm
-  args: ['install']
+  args: ['install'] #INSTALLED
 
-# run unit tests
+#TEST: run unit tests
 - name: node:12
   entrypoint: npm
-  args: ['test']
+  args: ['test'] #TESTED
 
-# containerize the application
+#CONTAINERIZE: containerize the application
 - name: gcr.io/cloud-builders/docker
   entrypoint: docker
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/hello', '.']
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/hello', '.'] #CONTAINERIZED
 
-# push container image to registry
+#PUSH: push container image to registry
 - name: gcr.io/cloud-builders/docker
   entrypoint: docker
-  args: ['push','gcr.io/$PROJECT_ID/hello']
+  args: ['push','gcr.io/$PROJECT_ID/hello'] #PUSHED
 
-# 
+#DEPLOY: deploy application to Cloud Run 
 - name: gcr.io/cloud-builders/gcloud
   entrypoint: gcloud
   args: 
@@ -35,4 +35,4 @@ steps:
       "--platform=managed",
       "--region=europe-west1",
       "--allow-unauthenticated"
-    ]
+    ] #DEPLOYED
