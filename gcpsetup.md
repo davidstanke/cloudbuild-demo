@@ -25,9 +25,9 @@ Run this command in the shell:
 Run these commands in the shell, replacing the placeholder variables with your information:
     
     ```
-    git config --global user.email "$$YOUR_EMAIL$$"
-    git config --global user.name "$$YOUR_NAME$$"
-    [TODO]
+    git config --global user.email "YOUR-EMAIL"
+    git config --global user.name "YOUR-NAME"
+    git remote set-url origin https://github.com/YOUR-USERNAME/cloudbuild-demo.git
     ```
 
 ### 5. enable Git credential helper
