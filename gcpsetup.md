@@ -26,10 +26,8 @@ Run these commands in the shell, replacing the placeholder variables with your i
     
     ```
     git config --global user.email "$$YOUR_EMAIL$$"
-    ```
-
-    ```
     git config --global user.name "$$YOUR_NAME$$"
+    [TODO]
     ```
 
 ### 5. enable Git credential helper
