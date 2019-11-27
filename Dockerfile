@@ -1,5 +1,5 @@
-FROM ???
+FROM node:12
 COPY . .
-RUN ???
-CMD ???
-EXPOSE ???
+RUN npm install --only=production
+CMD npm start
+EXPOSE 8080
