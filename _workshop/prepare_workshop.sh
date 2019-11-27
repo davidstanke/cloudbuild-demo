@@ -12,3 +12,9 @@ cp -f Dockerfile_stripped ../Dockerfile
 
 # remove cloudbuild.yaml answers
 cp -f cloudbuild_stripped.yaml ../cloudbuild.yaml
+
+# break a test
+sed -i '' 's/Hello, Dave/Hi, Dave/g' ../tests/app.test.js
+
+# add a linting error
+sed -i '' 's/port=8080;/port=8080;;/g' ../app.js
