@@ -1,0 +1,9 @@
+steps:
+
+# CONTAINERIZE: containerize the application
+- name: ???
+  entrypoint: ???
+  args: ['???', '???', 'gcr.io/$PROJECT_ID/hello', '.']
+
+# PUSH: push container image to registry
+- ???
