@@ -8,6 +8,7 @@ git branch -d workshop &>/dev/null || true
 git checkout -b workshop
 
 # remove Dockerfile answers
-mv -f Dockerfile_stripped ../Dockerfile
+cp -f Dockerfile_stripped ../Dockerfile
 
 # remove cloudbuild.yaml answers
+cp -f cloudbuild_stripped.yaml ../cloudbuild.yaml
