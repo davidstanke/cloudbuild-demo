@@ -29,7 +29,7 @@ describe('server', () => {
             .type('form')
             .send({'name':'Dave'})
             .end((err,res) => {
-                expect(res.text).to.contain("Hi, Dave!");
+                expect(res.text).to.contain("Hello, Dave!");
                 done();
             })
     })
