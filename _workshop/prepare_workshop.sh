@@ -8,4 +8,7 @@ git branch -d workshop &>/dev/null || true
 git checkout -b workshop
 
 # remove Dockerfile answers
-sed -i '' 's/FROM node:12/FROM ???/g' Dockerfile
+sed -i '' 's/node:12-alpine/???/g' Dockerfile
+sed -i '' 's/npm install --only=production/???/g' Dockerfile
+sed -i '' 's/npm start/???/g' Dockerfile
+sed -i '' 's/8080/???/g' Dockerfile
