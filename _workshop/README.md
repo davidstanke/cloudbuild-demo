@@ -1,0 +1,1 @@
+This directory contains tools useful for conducting a workshop around this demo.
