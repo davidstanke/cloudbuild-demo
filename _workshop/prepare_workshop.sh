@@ -26,4 +26,4 @@ rm -rf _workshop
 # push branch
 git add .
 git commit -am"create workshop branch"
-git push
+git push -f
