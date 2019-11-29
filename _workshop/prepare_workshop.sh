@@ -4,7 +4,8 @@ set -eou pipefail
 # To prepare a "workshop" branch with incomplete config, checkout master and run this script from the repo root
 
 git pull
-git checkout workshop || git checkout -b workshop
+git branch -d workshop || true
+git checkout -b workshop
 git branch --set-upstream-to=origin/workshop
 
 # remove Dockerfile answers
