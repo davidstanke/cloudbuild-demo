@@ -1,5 +1,5 @@
 # cloudbuild-demo
-A sample project that demonstrates some of [Google Cloud Build](https://cloud.google.com/cloud-build)'s capabilities
+A sample application that demonstrates some of [Google Cloud Build](https://cloud.google.com/cloud-build)'s capabilities
 
 ### Getting started
 
