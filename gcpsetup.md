@@ -16,6 +16,9 @@
 Run these commands in the shell, replacing the placeholder variables with your GitHub information:
     
     git config --global user.email "YOUR-EMAIL"
+
     git config --global user.name "YOUR-NAME"
+    
     git remote set-url origin https://github.com/YOUR-GITHUB-USERNAME/cloudbuild-demo.git
+    
     git config --global credential.helper store
