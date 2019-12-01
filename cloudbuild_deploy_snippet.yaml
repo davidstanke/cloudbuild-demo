@@ -1,3 +1,4 @@
+# DEPLOY: deploy application to Cloud Run 
 - name: gcr.io/cloud-builders/gcloud
   entrypoint: gcloud
   args: 
