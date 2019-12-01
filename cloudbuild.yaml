@@ -1,17 +1,17 @@
 steps:
 
 # LINT: run ESLint on js code
-- name: node:12
+- name: node:12-alpine
   entrypoint: npm
   args: ['run','lint']
 
-#I NSTALL: install dependencies
-- name: node:12
+# INSTALL: install dependencies
+- name: node:12-alpine
   entrypoint: npm
   args: ['install']
 
 # TEST: run unit tests
-- name: node:12
+- name: node:12-alpine
   entrypoint: npm
   args: ['test']
 
