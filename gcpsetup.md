@@ -1,7 +1,7 @@
 ## Preparing Google Cloud to run this demo
 
 ### 1. Enable the needed APIs:
-    Run these commands in the shell:
+Run these commands in the shell:
     
     export PROJECT_ID=$(gcloud projects list --limit=1 --format 'value(PROJECT_ID)')
     gcloud config set project $PROJECT_ID
