@@ -1,7 +1,7 @@
 steps:
 
 # CONTAINERIZE: containerize the application
-- name: ???
+- name: gcr.io/cloud-builders/???
   entrypoint: ???
   args: ['???', '???', 'gcr.io/$PROJECT_ID/hello', '.']
 
