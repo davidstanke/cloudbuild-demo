@@ -16,13 +16,17 @@ Run these commands in the shell:
 Run these commands in the shell, replacing the placeholder variables with your GitHub information:
 
 Set your email:    
+
     git config --global user.email "YOUR-EMAIL"
 
 Set your name:
+
     git config --global user.name "YOUR-NAME"
     
-Set the upstream remote to your GitHub account
+Set the upstream remote to your GitHub account:
+
     git remote set-url origin https://github.com/YOUR-GITHUB-USERNAME/cloudbuild-demo.git
 
-Enable the git credential store
+Enable the git credential store:
+
     git config --global credential.helper store
