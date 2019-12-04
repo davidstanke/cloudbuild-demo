@@ -8,7 +8,7 @@ A sample application that demonstrates some of [Google Cloud Build](https://clou
 
     <a href="https://speakerdeck.com/davidstanke/cd"><img src="https://raw.githubusercontent.com/davidstanke/cloudbuild-demo/master/_workshop/hands-on_title.png" width=180 target="_blank"></a>
 
-* _In a workshop class? Start here:_
+* _In a workshop class? Skip to here:_
 
     [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/davidstanke/cloudbuild-demo&cloudshell_git_branch=workshop&cloudshell_tutorial=gcpsetup.md)
 
