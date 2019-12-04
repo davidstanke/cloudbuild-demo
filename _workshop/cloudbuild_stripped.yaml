@@ -1,9 +1,0 @@
-steps:
-
-# CONTAINERIZE: containerize the application
-- name: gcr.io/cloud-builders/???
-  entrypoint: ???
-  args: ['???', '???', 'gcr.io/$PROJECT_ID/hello', '.']
-
-# PUSH: push container image to registry
-- ???
