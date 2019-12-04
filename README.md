@@ -19,4 +19,4 @@ A sample application that demonstrates some of [Google Cloud Build](https://clou
 _or:_
 
 1. Clone this repo
-2. see "gcpsetup.md"
+2. see "[gcpsetup.md](gcpsetup.md)"
