@@ -6,7 +6,7 @@ A sample application that demonstrates some of [Google Cloud Build](https://clou
 #### For workshop participants:
 * _Doing the workshop on your own? Start here:_
 
-    [![Presentation Slides](https://raw.githubusercontent.com/davidstanke/cloudbuild-demo/master/_workshop/hands-on_title.png | width=180)](https://speakerdeck.com/davidstanke/cd)
+    <a href="https://speakerdeck.com/davidstanke/cd"><img src="https://raw.githubusercontent.com/davidstanke/cloudbuild-demo/master/_workshop/hands-on_title.png" width=180></a>
 
 * _In a workshop class? Start here:_
 
