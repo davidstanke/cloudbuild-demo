@@ -21,17 +21,18 @@ gcloud services enable run.googleapis.com cloudbuild.googleapis.com containerreg
 Run these commands in the console, replacing the placeholder variables with your GitHub information:
 
 Set your email:    
-
+```bash
     git config --global user.email "YOUR-EMAIL"
-
+```
 Set your name:
-
+```bash
     git config --global user.name "YOUR-NAME"
-    
+```
 Set the upstream remote to your GitHub account:
-
+```bash
     git remote set-url origin https://github.com/YOUR-GITHUB-USERNAME/cloudbuild-demo.git
-
+```
 Enable the git credential store:
-
+```bash
     git config --global credential.helper store
+```
