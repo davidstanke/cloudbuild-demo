@@ -30,9 +30,11 @@ steps:
   entrypoint: gcloud
   args: 
     [
-      "beta","run","deploy","hello",
+      "beta","run","deploy","${_CLOUD_RUN_SERVICE_NAME}",
       "--image=gcr.io/$PROJECT_ID/hello",
       "--platform=managed",
       "--region=europe-west1",
       "--allow-unauthenticated"
     ]
+substitutions:
+  _CLOUD_RUN_SERVICE_NAME: hello
