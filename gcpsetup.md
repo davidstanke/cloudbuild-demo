@@ -2,10 +2,15 @@
 
 ### 1. Enable the needed APIs:
 Run these commands in the shell:
-    
-    export PROJECT_ID=$(gcloud projects list --limit=1 --format 'value(PROJECT_ID)')
-    gcloud config set project $PROJECT_ID
-    gcloud services enable run.googleapis.com cloudbuild.googleapis.com containerregistry.googleapis.com
+```shell    
+export PROJECT_ID=$(gcloud projects list --limit=1 --format 'value(PROJECT_ID)')
+```
+```shell    
+gcloud config set project $PROJECT_ID
+```
+```shell
+gcloud services enable run.googleapis.com cloudbuild.googleapis.com containerregistry.googleapis.com
+```
 
 ### 2. Grant Cloud Build permission to deploy to Cloud Run
 1. Go to [Google Cloud Console > Cloud Build Settings](https://console.cloud.google.com/cloud-build/settings)
