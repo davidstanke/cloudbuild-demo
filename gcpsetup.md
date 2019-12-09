@@ -1,16 +1,14 @@
 ## Preparing Google Cloud to run this demo
 
 ### 1. Enable the needed APIs:
-Run these commands in the shell:
-```shell    
+Run these commands in the console:
+```bash    
 export PROJECT_ID=$(gcloud projects list --limit=1 --format 'value(PROJECT_ID)')
 ```
-
-```shell    
+```bash    
 gcloud config set project $PROJECT_ID
 ```
-
-```shell
+```bash
 gcloud services enable run.googleapis.com cloudbuild.googleapis.com containerregistry.googleapis.com
 ```
 
@@ -20,7 +18,7 @@ gcloud services enable run.googleapis.com cloudbuild.googleapis.com containerreg
     > ...you will be prompted to also grant the *Service Account User* role. Click "GRANT ACCESS TO ALL SERVICE ACCOUNTS"
 
 ### 3. configure Git
-Run these commands in the shell, replacing the placeholder variables with your GitHub information:
+Run these commands in the console, replacing the placeholder variables with your GitHub information:
 
 Set your email:    
 
