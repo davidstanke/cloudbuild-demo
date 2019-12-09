@@ -5,9 +5,11 @@ Run these commands in the shell:
 ```shell    
 export PROJECT_ID=$(gcloud projects list --limit=1 --format 'value(PROJECT_ID)')
 ```
+
 ```shell    
 gcloud config set project $PROJECT_ID
 ```
+
 ```shell
 gcloud services enable run.googleapis.com cloudbuild.googleapis.com containerregistry.googleapis.com
 ```
