@@ -33,7 +33,7 @@ steps:
       "beta","run","deploy","${_CLOUD_RUN_SERVICE_NAME}",
       "--image=gcr.io/$PROJECT_ID/hello",
       "--platform=managed",
-      "--region=europe-west1",
+      "--region=us-central1",
       "--allow-unauthenticated"
     ]
 substitutions:
