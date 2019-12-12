@@ -28,7 +28,7 @@ steps:
     args: 
       - "-c"
       - |
-        set -euox
+        #set -euox
         # dermine pull request ID that triggered this build
         # (feature request: make PR ID available as a substitution)
         # TODO: bake jq install into a builder
