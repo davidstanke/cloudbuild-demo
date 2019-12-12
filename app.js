@@ -23,7 +23,7 @@ app.get('/', async (req, res) => {
 app.all('/greet', async (req, res) => {
     let user=req.body.name;
     res.render('default', { 
-        greeting: "Hello, " + user + "! We think you're super.",
+        greeting: "Hello, " + user + "! We think you're super!",
         banner: "/img/logo_cloud_icon.png",
         bannerUrl: "https://cloud.google.com"
     });
