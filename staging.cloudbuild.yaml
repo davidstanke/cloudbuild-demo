@@ -39,7 +39,7 @@ steps:
         export GITHUB_PAYLOAD="{\"body\": \"Preview this change on staging @ https://${_CLOUD_RUN_STAGING_URL}/\"}" && \
       
         # post the comment
-        curl -s -H "Authorization: token $$GITHUB_TOKEN" -X POST -d '$GITHUB_PAYLOAD' "https://api.github.com/repos/davidstanke/cloudbuild-demo/issues/$$PULLREQUEST_ID/comments"
+        curl -s -H "Authorization: token $GITHUB_TOKEN" -X POST -d '$$GITHUB_PAYLOAD' "https://api.github.com/repos/davidstanke/cloudbuild-demo/issues/$$PULLREQUEST_ID/comments"
     secretEnv:
       - GITHUB_TOKEN
 
