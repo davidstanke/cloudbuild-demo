@@ -52,6 +52,9 @@ steps:
       # prepare the API payload
       echo "{\"body\": \"Preview this change on staging: https://${_CLOUD_RUN_STAGING_URL}/\"}" > /workspace/api_payload.txt && \
 
+      # debug
+      cat /workspace/api_payload.txt
+
       # post the comment
       curl -s -H "Authorization: token $$GITHUB_TOKEN" -X POST -d @/workspace/api_payload.txt "https://api.github.com/repos/davidstanke/stanke.dev/issues/$$PULLREQUEST_ID/comments"
 
