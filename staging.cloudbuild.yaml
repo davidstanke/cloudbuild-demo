@@ -25,10 +25,10 @@ steps:
   # add preview URL as a comment on Pull Request
   - name: gcr.io/cloud-builders/curl
     entrypoint: bash
-    args: 
+    args:
       - "-c"
       - |
-        echo hi
+        apt-get update -y && apt-get install jq -y
     secretEnv: 
       - GITHUB_TOKEN
 
