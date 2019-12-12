@@ -1,20 +1,5 @@
 steps:
 
-# LINT: run ESLint on js code
-- name: node:12-alpine
-  entrypoint: npm
-  args: ['run','lint']
-
-# INSTALL: install dependencies
-- name: node:12-alpine
-  entrypoint: npm
-  args: ['install']
-
-# TEST: run unit tests
-- name: node:12-alpine
-  entrypoint: npm
-  args: ['test']
-
 # CONTAINERIZE: containerize the application
 - name: gcr.io/cloud-builders/docker
   entrypoint: docker
