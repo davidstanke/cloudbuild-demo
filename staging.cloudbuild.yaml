@@ -63,7 +63,7 @@ substitutions:
   _CLOUD_RUN_STAGING_URL: staging.cloudbuild.demo.stanke.dev
 
 secrets:
-  - kmsKeyName: projects/cloudbuild-demo/locations/global/keyRings/gcb-demo/cryptoKeys/cloudbuild-demo-github
+  - kmsKeyName: projects/gcb-demo/locations/global/keyRings/gcb-demo/cryptoKeys/cloudbuild-demo-github
     secretEnv:
       GITHUB_TOKEN: "\
       CiQAd0xfMxvWgCnWVxUwmsMwBrUgee59+mipaSp42kiL8UUY9P4SUgAQ7EEUEMH\
