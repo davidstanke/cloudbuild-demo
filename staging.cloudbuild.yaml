@@ -28,6 +28,7 @@ steps:
   args: 
     - "-c"
     - |
+      set -euo
       # dermine pull request ID that triggered this build
       # (feature request: make PR ID available as a substitution)
       # TODO: bake jq install into a builder
@@ -40,7 +41,7 @@ steps:
       echo "{\"body\": \"Preview this change on staging: https://${_CLOUD_RUN_STAGING_URL}/\"}" > /workspace/api_payload.txt && \
      
       # debug
-      cat /workspace/api_payload.txt
+      cat /workspace/api_payload.txt && \
      
       # post the comment
       curl -s -H "Authorization: token $$GITHUB_TOKEN" -X POST -d @/workspace/api_payload.txt "https://api.github.com/repos/davidstanke/cloudbuild-demo/issues/$$PULLREQUEST_ID/comments"
