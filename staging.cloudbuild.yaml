@@ -1,0 +1,64 @@
+steps:
+
+# CONTAINERIZE: containerize the application
+- name: gcr.io/cloud-builders/docker
+  entrypoint: docker
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/hello', '.']
+
+# PUSH: push container image to registry
+- name: gcr.io/cloud-builders/docker
+  entrypoint: docker
+  args: ['push','gcr.io/$PROJECT_ID/hello']
+
+# DEPLOY: deploy application to Cloud Run 
+- name: gcr.io/cloud-builders/gcloud
+  entrypoint: gcloud
+  args: 
+    [
+        "beta","run","deploy","${_CLOUD_RUN_SERVICE_NAME}",
+        "--image=gcr.io/$PROJECT_ID/hello",
+        "--platform=managed",
+        "--region=us-central1",
+        "--allow-unauthenticated"
+    ]
+
+# add preview URL as a comment on Pull Request
+- name: gcr.io/cloud-builders/curl
+  entrypoint: bash
+  args: 
+    - "-c"
+    - |
+        # dermine pull request ID that triggered this build
+        # (feature request: make PR ID available as a substitution)
+        # TODO: bake jq install into a builder
+
+        # fetch PR for this commit
+        # debug
+        echo "commit sha $COMMIT_SHA"
+
+        apt-get update -y && apt-get install jq -y && \ 
+        export PULLREQUEST_ID=$(curl "https://api.github.com/search/issues?q=$COMMIT_SHA&type:pr" | jq ".items[0].number") && \
+
+        # prepare the API payload
+        echo "{\"body\": \"Preview this change on staging: https://${_CLOUD_RUN_STAGING_URL}/\"}" > /workspace/api_payload.txt && \
+
+        # debug
+        cat /workspace/api_payload.txt
+
+        # post the comment
+        curl -s -H "Authorization: token $$GITHUB_TOKEN" -X POST -d @/workspace/api_payload.txt "https://api.github.com/repos/davidstanke/stanke.dev/issues/$$PULLREQUEST_ID/comments"
+
+  secretEnv: 
+    - GITHUB_TOKEN
+
+substitutions:
+    _CLOUD_RUN_SERVICE_NAME: hello
+    _CLOUD_RUN_STAGING_URL: staging.cloudbuild.demo.stanke.dev
+
+secrets:
+  - kmsKeyName: projects/gcb-demo/locations/global/keyRings/gcb-demo/cryptoKeys/cloudbuild-demo-github
+    secretEnv:
+        GITHUB_TOKEN: "\
+        CiQAd0xfMxvWgCnWVxUwmsMwBrUgee59+mipaSp42kiL8UUY9P4SUgAQ7EEUEMH\
+        bzYr8/8cwmRw4sJYxSTRk2Jqr2HHVjLbb7tt6KXDAWtttL4R+G2/jglJv/KRsL4t\
+        8JRmPC9mvI/BQ31nI6JJIEDZpTsg3AKAv3/w="
