@@ -62,3 +62,5 @@ typings/
 
 # macOS
 .DS_Store
+
+.project
