@@ -14,8 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // register routes
 app.get('/', async (req, res) => {
     res.render('index', { 
-      title: "Hello from Google Cloud",
-      greeting: "Hello from Google Cloud; Let's party!",
+      greeting: "Hello from Google Cloud!",
       banner: "/img/logo_cloud_icon.png",
       bannerUrl: "https://cloud.google.com"
     });
@@ -24,7 +23,6 @@ app.get('/', async (req, res) => {
 app.all('/greet', async (req, res) => {
     let user=req.body.name;
     res.render('default', { 
-        title: "Hello, " + user,
         greeting: "Hello, " + user + "! We think you're super.",
         banner: "/img/logo_cloud_icon.png",
         bannerUrl: "https://cloud.google.com"
